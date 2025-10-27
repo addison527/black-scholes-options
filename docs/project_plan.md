@@ -1,5 +1,8 @@
 Addison - pc
-Will, Adam, Amanda, Minh Quanh, Jason
+Will - greeks 
+Adam - 
+Dylan - 
+Jason - data loading
 
 - Assign roles
 
@@ -12,7 +15,6 @@ Checklist:
  Docstring explaining parameters and formula
 
  Notebook (bs_pricing_examples.ipynb) showing example output
-
 
 Fetch test data using yfinance or similar API.
 
@@ -36,24 +38,15 @@ Validate using known formulas and sample results.
 
  Notebook visualization for Greek sensitivities
 
-
-
 Create notebooks/option_visualizations.ipynb.
-
 Generate graphs showing:
-
 Price vs Volatility
-
 Price vs Strike
-
 Price vs Time to Expiration
-
 Greeks curves
 
 Add markdown cells interpreting the plots.
-
-
- Notebook added
+Notebook added
 
  Uses outputs from Black-Scholes + Greeks
 

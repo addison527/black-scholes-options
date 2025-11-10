@@ -7,7 +7,7 @@ __pycache__/
 .ipynb_checkpoints/
 
 # Data files (optional, if you don’t want to commit)
-data/
+# data/
 
 # Environment / config files
 .env

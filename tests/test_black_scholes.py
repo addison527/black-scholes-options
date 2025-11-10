@@ -1,5 +1,5 @@
 import unittest
-from src.black_scholes import black_scholes_price
+from models.black_scholes import black_scholes_price
 
 class TestBlackScholes(unittest.TestCase):
     def test_call_option(self):

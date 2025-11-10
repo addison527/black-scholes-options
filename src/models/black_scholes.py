@@ -1,6 +1,7 @@
 """
 Main module for Black-Scholes option pricing functions.
 """
+from data_loader.py import S, K, T, r, sigma
 import numpy as np
 from scipy.stats import norm
 

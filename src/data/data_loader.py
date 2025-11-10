@@ -28,7 +28,7 @@ expiry_datetime = datetime.strptime(expiry, "%Y-%m-%d")
 T=(expiry_datetime-datetime.now()).days / 365
 
 #strike price
-strike=calls.loc[10, "strike"]
+K=calls.loc[10, "strike"]
 sigma = calls.loc[10, "impliedVolatility"]
 
 

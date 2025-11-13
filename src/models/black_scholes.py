@@ -1,53 +1,29 @@
-"""Main module for Black-Scholes option pricing functions."""
-# Import a helper to fetch market data. Prefer the helper function so callers
-# can explicitly fetch values where needed (and tests/mocks can replace it).
-try:
-    from ..data.data_loader import get_market_data
-except Exception:
-    try:
-        from data.data_loader import get_market_data
-    except Exception:
-        get_market_data = None
-
-# If available, populate module-level defaults for convenience. Callers can
-# still pass explicit values to the pricing function.
-if get_market_data is not None:
-    try:
-        S, K, T, r, sigma = get_market_data()
-    except Exception:
-        S = K = T = r = sigma = None
-else:
-    S = K = T = r = sigma = None
-
 import numpy as np
-from scipy.stats import norm
+import scipy.stats as si
 
-
-def black_scholes_price(S, K, T, r, sigma, option_type="call"):
+def black_scholes(S, K, T, r, sigma, option_type):
     """
-    Calculate Black-Scholes option price.
+    Calculates the Black-Scholes option price.
 
-    Parameters
-    - S: Spot price
-    - K: Strike price
-    - T: Time to maturity (in years)
-    - r: Risk-free rate
-    - sigma: Volatility
-    - option_type: 'call' or 'put'
+    Args:
+        S (float): Current stock price.
+        K (float): Option strike price.
+        T (float): Time to expiration (in years).
+        r (float): Risk-free interest rate (annualized).
+        sigma (float): Volatility of the underlying asset (annualized).
+        option_type (str): 'call' or 'put'.
 
-    Returns
-    - price: Black-Scholes price for the option
+    Returns:
+        float: Option price.
     """
-    # Basic validation: T and sigma must be positive to avoid division by zero
-    if T is None or sigma is None:
-        raise ValueError("T and sigma must be provided (not None)")
-    if T <= 0 or sigma <= 0:
-        raise ValueError("T and sigma must be > 0")
-
-    d1 = (np.log(S / K) + (r + 0.5 * sigma ** 2) * T) / (sigma * np.sqrt(T))
+    d1 = (np.log(S / K) + (r + 0.5 * sigma**2) * T) / (sigma * np.sqrt(T))
     d2 = d1 - sigma * np.sqrt(T)
-    if option_type == "call":
-        price = S * norm.cdf(d1) - K * np.exp(-r * T) * norm.cdf(d2)
+
+    if option_type == 'call':
+        price = (S * si.norm.cdf(d1, 0.0, 1.0) - K * np.exp(-r * T) * si.norm.cdf(d2, 0.0, 1.0))
+    elif option_type == 'put':
+        price = (K * np.exp(-r * T) * si.norm.cdf(-d2, 0.0, 1.0) - S * si.norm.cdf(-d1, 0.0, 1.0))
     else:
-        price = K * np.exp(-r * T) * norm.cdf(-d2) - S * norm.cdf(-d1)
+        raise ValueError("option_type must be 'call' or 'put'")
+
     return price

@@ -1,100 +1,140 @@
-Addison - pc
-Will - greeks 
-Adam - 
-Dylan - 
-Jason - data loading
+# **Project Plan**
 
-- Assign roles
+* **Addison** – Project Coordinator
+* **Will** – Greeks Calculations
+* **Amanda** – Greeks Calculations
+* **Adam** – Graphing & Visualizations
+* **Dylan** – Graphing & Visualizations
+* **Jason** – Data Loading
 
-Checklist:
+---
 
- Function black_scholes_price() created
+# **Black-Scholes Option Pricing Function**
 
- Tested with sample inputs
+Implement the core `black_scholes_price()` function and validate correctness.
 
- Docstring explaining parameters and formula
+### **Deliverables**
 
- Notebook (bs_pricing_examples.ipynb) showing example output
+* `black_scholes_price()` implemented
+* Fully documented docstring (parameters + formula)
+* Tested with sample inputs
+* Example notebook: `notebooks/bs_pricing_examples.ipynb`
 
-Fetch test data using yfinance or similar API.
+### **Checklist**
 
-Retrieve stock price, expiry dates, strike prices, and risk-free rate proxy.
+* [x] Function `black_scholes_price()` created
+* [ ] Tested with sample inputs
+* [ ] Docstring added
+* [ ] Notebook with example output created
 
-Save sample dataset in /data/ folder.
+---
 
-Return clean pandas.DataFrame.
+# **Market Data Loading Module**
 
-Implement analytic formulas for Delta, Gamma, Vega, Theta, Rho.
+**Jason:** Fetch sample option-related data using `yfinance` (or similar API) and prepare a clean dataset.
 
-Each function accepts the same inputs as Black-Scholes.
+### **Deliverables**
 
-Validate using known formulas and sample results.
+* Script/module to load and clean stock + option inputs
+* Data saved under `/data/`
+* Returns `pandas.DataFrame`
 
- greeks.py created
+### **Checklist**
 
- Delta, Gamma, Vega, Theta, Rho implemented
+* [ ] Fetch test data (`yfinance` or alternative)
+* [ ] Retrieve: stock price, expiration, strike, risk-free rate
+* [ ] Clean & format dataset
+* [ ] Save dataset to `/data/`
+* [ ] Confirm returned type is DataFrame
 
- Tested with sample inputs
+---
 
- Notebook visualization for Greek sensitivities
+# **Greeks Calculation Module**
 
-Create notebooks/option_visualizations.ipynb.
-Generate graphs showing:
-Price vs Volatility
-Price vs Strike
-Price vs Time to Expiration
-Greeks curves
+**Will & Amanda:** Implement analytic Greek formulas and validate outputs.
 
-Add markdown cells interpreting the plots.
-Notebook added
+### **Deliverables**
 
- Uses outputs from Black-Scholes + Greeks
+* `greeks.py` module
+* Functions for: Delta, Gamma, Vega, Theta, Rho
+* Matching inputs to Black-Scholes pricing function
+* Notebook showing Greek sensitivity plots
 
- At least 3 clean visualizations with explanations
+### **Checklist**
 
+* [ ] `greeks.py` created
+* [ ] Delta implemented
+* [ ] Gamma implemented
+* [ ] Vega implemented
+* [ ] Theta implemented
+* [ ] Rho implemented
+* [ ] Tested with sample inputs
+* [ ] Notebook with Greek visualizations created
 
-Expand README to include:
+---
 
-Project motivation and background
+# **Visualization Notebooks**
 
-Overview of Black-Scholes theory (with equations)
+**Adam & Dylan:** Build visual interpretation tools for price + Greeks sensitivity.
 
-Setup instructions (pip install -r requirements.txt)
+### **Deliverables**
 
-Contribution guide (branch naming, PR process)
+New notebook: `notebooks/option_visualizations.ipynb`
+Plots must visualize the impact of changing different variables.
 
-Add a new file docs/black_scholes_theory.md summarizing the model derivation.
+### **Required Plots**
 
+* Price vs Volatility
+* Price vs Strike
+* Price vs Time to Expiration
+* Greeks Curves (Δ Γ ν Θ ρ)
 
- README updated
+### **Checklist**
 
- Model theory document created
+* [ ] Notebook created
+* [ ] Uses outputs from Black-Scholes + Greeks
+* [ ] ≥ 3 clear visualizations
+* [ ] Markdown explanations included
 
- Contribution guide section added
+---
 
- Formatting and math notation clear
+# **Documentation & Theory Pages**
 
+**Addison:** Document theory, setup instructions.
 
-7. Assignee: Addison (Coordinator)
+**Amanda, Will, Jason, Adam, Dylan:** Document 1-2 paragraphs on overleaf about their contributions and findings
 
-Description:
+### **Deliverables**
 
-Combine all modules to test full pipeline:
+* Expanded `README.md`
+* New theory document: `docs/black_scholes_theory.md`
+* Contribution guide (branch naming, PR process, workflow)
 
-Load stock data
+### **Checklist**
 
-Compute option prices
+* [ ] README updated
+* [ ] Theory document created
+* [ ] Contribution guide section added
+* [ ] Math notation + formatting cleaned
 
-Print results or simple plots
+---
 
-Ensure all imports and dependencies work together.
+# **Final Integration**
 
-Checklist:
+**Addison:** Ensure all modules work together properly.
 
- main.py connects data + model
+### **Deliverables**
 
- Output verified
+* `main.py` wiring everything together
+* Load data → compute prices → compute Greeks → display results
+* Confirm no import/path issues
+* Team review
 
- No import errors or path issues
+### **Checklist**
 
- Team review completed
+* [ ] `main.py` loads stock data
+* [ ] Computes option prices
+* [ ] Computes Greeks
+* [ ] Outputs results or simple plots
+* [ ] No import errors
+* [ ] Team review completed
